@@ -167,3 +167,55 @@ function updateText() {
 }
 
 setInterval(updateText, 4000); 
+
+window.addEventListener('load', () => {
+    const music = document.getElementById("backgroundMusic");
+    music.play().catch(error => {
+      console.log("Autoplay failed: ", error);
+    });
+  });
+  const images = [
+    "image1.jpg",
+    "image2.jpg",
+    "image3.jpg",
+    "image4.jpg",
+    "image5.jpg",
+    "image6.jpg"
+  ]; // Replace with your actual image paths
+  function createPopup() {
+    const container = document.getElementById("popupContainer");
+  
+    // Create a new image element
+    const popup = document.createElement("img");
+    popup.src = images[Math.floor(Math.random() * images.length)]; // Random image
+    popup.className = "popupImage";
+  
+    // Randomize position
+    const randomX = Math.random() * (window.innerWidth - 100); // Adjust for width
+    const randomY = Math.random() * (window.innerHeight - 100); // Adjust for height
+    popup.style.left = `${randomX}px`;
+    popup.style.top = `${randomY}px`;
+  
+    // Add the popup to the container
+    container.appendChild(popup);
+  
+    // Trigger fade-in after adding the image
+    setTimeout(() => {
+      popup.style.opacity = "1"; // Gradually appear
+    }, 50); // Small delay for DOM rendering
+  
+    // Trigger fade-out after the image is fully visible
+    setTimeout(() => {
+      popup.style.opacity = "0"; // Gradually disappear
+    }, 3000); // Keep the image visible for 3 seconds
+  
+    // Remove the image after fade-out
+    setTimeout(() => {
+      container.removeChild(popup);
+    }, 5000); // 2 seconds for fade-out + 3 seconds display
+  }
+  
+  // Show images at random intervals
+  setInterval(() => {
+    createPopup();
+  }, 4000); // 4 seconds between popups
