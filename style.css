@@ -55,6 +55,7 @@ canvas {
 }
 
 #popupContainer {
+  /* padding: 20%; */
   z-index: 0;
   position: absolute;
   width: 100%;
@@ -64,7 +65,7 @@ canvas {
 
 .popupImage {
   position: absolute;
-  width: 100px; /* Adjust size */
+  width: 150px; /* Adjust size */
   height: auto;
   opacity: 0; /* Start fully transparent */
   transition: opacity 2s ease-in-out; /* Gradual fade-in and fade-out */
