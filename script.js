@@ -146,9 +146,9 @@ if (s === 'complete' || s === 'loaded' || s === 'interactive') init();
 else document.addEventListener('DOMContentLoaded', init, false);
 
 const texts = ["I'm not going to find",
-     "someone better", 
+     "Someone better", 
      "I'm not going to", 
-     "lose feelings", 
+     "Lose feelings", 
      "I want you"
     , "and"
     , "Only you !"
@@ -175,47 +175,68 @@ window.addEventListener('load', () => {
     });
   });
   const images = [
-    "image1.jpg",
-    "image2.jpg",
-    "image3.jpg",
-    "image4.jpg",
-    "image5.jpg",
-    "image6.jpg"
+    "3.png",
+    "4.png",
+    "5.png",
+    "6.png",
+    "7.png",
+    "8.png",
+    "9.png",
+    "10.png",
   ]; // Replace with your actual image paths
   function createPopup() {
     const container = document.getElementById("popupContainer");
-  
+
     // Create a new image element
     const popup = document.createElement("img");
     popup.src = images[Math.floor(Math.random() * images.length)]; // Random image
     popup.className = "popupImage";
-  
-    // Randomize position
-    const randomX = Math.random() * (window.innerWidth - 100); // Adjust for width
-    const randomY = Math.random() * (window.innerHeight - 100); // Adjust for height
+
+    let randomX, randomY;
+    const noGoZone = {
+        xMin: window.innerWidth / 4, // Define the left edge of the no-go zone
+        xMax: (window.innerWidth / 4) * 3, // Define the right edge of the no-go zone
+        yMin: window.innerHeight / 4, // Define the top edge of the no-go zone
+        yMax: (window.innerHeight / 4) * 3 // Define the bottom edge of the no-go zone
+    };
+
+    do {
+        // Generate random positions
+        randomX = Math.random() * (window.innerWidth - 100); // Adjust for width
+        randomY = Math.random() * (window.innerHeight - 100); // Adjust for height
+
+        // Check if the position is inside the no-go zone
+    } while (
+        randomX >= noGoZone.xMin &&
+        randomX <= noGoZone.xMax &&
+        randomY >= noGoZone.yMin &&
+        randomY <= noGoZone.yMax
+    );
+
+    // Set the position of the popup
     popup.style.left = `${randomX}px`;
     popup.style.top = `${randomY}px`;
-  
+
     // Add the popup to the container
     container.appendChild(popup);
-  
+
     // Trigger fade-in after adding the image
     setTimeout(() => {
-      popup.style.opacity = "1"; // Gradually appear
+        popup.style.opacity = "1"; // Gradually appear
     }, 50); // Small delay for DOM rendering
-  
+
     // Trigger fade-out after the image is fully visible
     setTimeout(() => {
-      popup.style.opacity = "0"; // Gradually disappear
+        popup.style.opacity = "0"; // Gradually disappear
     }, 3000); // Keep the image visible for 3 seconds
-  
+
     // Remove the image after fade-out
     setTimeout(() => {
-      container.removeChild(popup);
+        container.removeChild(popup);
     }, 5000); // 2 seconds for fade-out + 3 seconds display
-  }
-  
-  // Show images at random intervals
-  setInterval(() => {
+}
+
+// Show images at random intervals
+setInterval(() => {
     createPopup();
-  }, 4000); // 4 seconds between popups
+}, 4000); // 4 seconds between popups

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'VeganStyle';
+  src: url('./VeganStylePersonalUse-5Y58.ttf') format('truetype');
+}
+
+body {
+  font-family: 'VeganStyle';
+  letter-spacing: 4px; /* Adjust the value as needed */
+}
+
 canvas {
   position: absolute;
   left: 0;
@@ -5,6 +15,7 @@ canvas {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .2);
+  z-index: 0; 
 }
 
 @font-face {
@@ -21,6 +32,7 @@ canvas {
   font-family: 'VeganStyle', Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(212, 158, 172);
   animation: fadeInOut 1s infinite;
+  z-index: 1;
 }
 #text {
   position: absolute;
@@ -30,6 +42,7 @@ canvas {
   font-size: 2rem;
   font-family: 'VeganStyle', Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(212, 158, 172);
+  z-index: 1;
  
 }
 
@@ -42,6 +55,7 @@ canvas {
 }
 
 #popupContainer {
+  z-index: 0;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -54,5 +68,6 @@ canvas {
   height: auto;
   opacity: 0; /* Start fully transparent */
   transition: opacity 2s ease-in-out; /* Gradual fade-in and fade-out */
+  z-index: 0;
 }
 
