@@ -184,59 +184,59 @@ window.addEventListener('load', () => {
     // "9.png",
     // "10.png",
   ]; 
-  function createPopup() {
-    const container = document.getElementById("popupContainer");
+//   function createPopup() {
+//     const container = document.getElementById("popupContainer");
 
-    // Create a new image element
-    const popup = document.createElement("img");
-    popup.src = images[Math.floor(Math.random() * images.length)]; // Random image
-    popup.className = "popupImage";
+//     // Create a new image element
+//     const popup = document.createElement("img");
+//     popup.src = images[Math.floor(Math.random() * images.length)]; // Random image
+//     popup.className = "popupImage";
 
-    let randomX, randomY;
-    const noGoZone = {
-        xMin: window.innerWidth / 4, // Define the left edge of the no-go zone
-        xMax: (window.innerWidth / 4) * 3, // Define the right edge of the no-go zone
-        yMin: window.innerHeight / 4, // Define the top edge of the no-go zone
-        yMax: (window.innerHeight / 4) * 3 // Define the bottom edge of the no-go zone
-    };
+//     let randomX, randomY;
+//     const noGoZone = {
+//         xMin: window.innerWidth / 4, // Define the left edge of the no-go zone
+//         xMax: (window.innerWidth / 4) * 3, // Define the right edge of the no-go zone
+//         yMin: window.innerHeight / 4, // Define the top edge of the no-go zone
+//         yMax: (window.innerHeight / 4) * 3 // Define the bottom edge of the no-go zone
+//     };
 
-    do {
-        // Generate random positions
-        randomX = Math.random() * (window.innerWidth - 100); // Adjust for width
-        randomY = Math.random() * (window.innerHeight - 100); // Adjust for height
+//     do {
+//         // Generate random positions
+//         randomX = Math.random() * (window.innerWidth - 100); // Adjust for width
+//         randomY = Math.random() * (window.innerHeight - 100); // Adjust for height
 
-        // Check if the position is inside the no-go zone
-    } while (
-        randomX >= noGoZone.xMin &&
-        randomX <= noGoZone.xMax &&
-        randomY >= noGoZone.yMin &&
-        randomY <= noGoZone.yMax
-    );
+//         // Check if the position is inside the no-go zone
+//     } while (
+//         randomX >= noGoZone.xMin &&
+//         randomX <= noGoZone.xMax &&
+//         randomY >= noGoZone.yMin &&
+//         randomY <= noGoZone.yMax
+//     );
 
-    // Set the position of the popup
-    popup.style.left = `${randomX}px`;
-    popup.style.top = `${randomY}px`;
+//     // Set the position of the popup
+//     popup.style.left = `${randomX}px`;
+//     popup.style.top = `${randomY}px`;
 
-    // Add the popup to the container
-    container.appendChild(popup);
+//     // Add the popup to the container
+//     container.appendChild(popup);
 
-    // Trigger fade-in after adding the image
-    setTimeout(() => {
-        popup.style.opacity = "1"; // Gradually appear
-    }, 50); // Small delay for DOM rendering
+//     // Trigger fade-in after adding the image
+//     setTimeout(() => {
+//         popup.style.opacity = "1"; // Gradually appear
+//     }, 50); // Small delay for DOM rendering
 
-    // Trigger fade-out after the image is fully visible
-    setTimeout(() => {
-        popup.style.opacity = "0"; // Gradually disappear
-    }, 3000); // Keep the image visible for 3 seconds
+//     // Trigger fade-out after the image is fully visible
+//     setTimeout(() => {
+//         popup.style.opacity = "0"; // Gradually disappear
+//     }, 3000); // Keep the image visible for 3 seconds
 
-    // Remove the image after fade-out
-    setTimeout(() => {
-        container.removeChild(popup);
-    }, 5000); // 2 seconds for fade-out + 3 seconds display
-}
+//     // Remove the image after fade-out
+//     setTimeout(() => {
+//         container.removeChild(popup);
+//     }, 5000); // 2 seconds for fade-out + 3 seconds display
+// }
 
-// Show images at random intervals
-setInterval(() => {
-    createPopup();
-}, 4000); // 4 seconds between popups
+// // Show images at random intervals
+// setInterval(() => {
+//     createPopup();
+// }, 4000); // 4 seconds between popups
